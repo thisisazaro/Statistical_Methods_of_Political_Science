@@ -1,10 +1,17 @@
-# Abstract
-This study analyzes the time series representing the total export volume from Russia in billion USD from 1994 to 2021. The research involves data visualization, stationarity testing, data transformation, and forecasting using various models, including ETS, SARIMA, Theta method, and Random Forest. The models are compared to determine the most accurate one, residuals are analyzed, and a two-year forecast is generated. Additionally, the study examines anomalies and structural shifts in the data.
+# **Statistical Methods of Political Science**
 
-# Research Questions
-- Is the export time series stationary?
-- What data transformation (if any) improves forecasting accuracy?
-- Which models provide the most accurate export predictions?
-- Does combining multiple models improve forecast accuracy compared to individual models?
-- What are the main anomalies or structural changes in export data?
-- What is the forecast for the next two years based on historical trends?
+This repository contains materials and code for the **Statistical Methods of Political Science** course. The course focuses on applying statistical and computational techniques to analyze political data, covering topics such as data collection, visualization, modeling, and machine learning.
+
+## **Lesson 1: Web Scraping**
+The first lesson introduces **web scraping**, a method for collecting data from websites. We use `R` and the libraries `rvest` and `polite` to extract structured information from web pages. The lesson covers:
+- Basics of HTML structure and CSS selectors.
+- Fetching data using polite requests to avoid blocking.
+- Extracting news articles from government websites.
+- Handling and storing scraped data in structured formats (CSV, DataFrame).
+
+### **Files in this repository**
+- `web_scraping.R` – R script for extracting press releases.
+- `scraped_news.csv` – Sample dataset of collected articles.
+- `README.md` – Overview of the course and lesson materials.
+
+Stay tuned for future lessons on data analysis, regression models, and machine learning in political science! 🚀

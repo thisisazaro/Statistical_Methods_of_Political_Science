@@ -78,7 +78,7 @@ head(newstexts, 2)
 
 # Сохранение данных в CSV
 df <- data.frame(links, titles, newstexts, stringsAsFactors = FALSE)
-write.csv(df, "scraped_news.csv", row.names = FALSE)
+write.csv(df, "data/scraped_news.csv", row.names = FALSE)
 # Проверить содержимое файла
 print(read.csv("scraped_news.csv"))
 
