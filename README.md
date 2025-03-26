@@ -14,8 +14,6 @@ The first lesson introduces **web scraping**, a method for collecting data from 
 - `scraped_news.csv` – Sample dataset of collected articles.
 - `README.md` – Overview of the course and lesson materials.
 
-Stay tuned for future lessons on data analysis, regression models, and machine learning in political science! 🚀
-
 ## **Lesson 2: Text Analysis of Presidential Speeches**
 
 In this lesson, we explore quantitative text analysis using a corpus of U.S. presidential inaugural addresses. 
@@ -36,3 +34,5 @@ We use the `quanteda` package in R to preprocess, analyze, and visualize textual
 (Optional) Grouped analysis by political party to assess differences in rhetoric.
 
 This lesson demonstrates how text-as-data approaches can be used in political science to study rhetorical strategies, topic prevalence, and language evolution in political communication.
+
+Stay tuned for future lessons on data analysis, regression models, and machine learning in political science! 🚀
