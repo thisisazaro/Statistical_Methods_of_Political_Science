@@ -15,3 +15,24 @@ The first lesson introduces **web scraping**, a method for collecting data from 
 - `README.md` – Overview of the course and lesson materials.
 
 Stay tuned for future lessons on data analysis, regression models, and machine learning in political science! 🚀
+
+## **Lesson 2: Text Analysis of Presidential Speeches**
+
+In this lesson, we explore quantitative text analysis using a corpus of U.S. presidential inaugural addresses. 
+The goal is to apply methods from computational social science to extract insights from political speeches.
+We use the `quanteda` package in R to preprocess, analyze, and visualize textual data. 
+
+### **The lesson covers:**
+- Corpus creation and inspection using `data_corpus_inaugural`.
+- Text preprocessing: tokenization, lowercasing, stopword removal, punctuation and number stripping.
+- Construction of a Document-Feature Matrix (DFM) to represent speech content numerically.
+- Frequency and diversity analysis: calculating type-token ratios across presidents.
+
+### **Visualization techniques, including:**
+- Word clouds for overall speech content.
+- Comparative word clouds grouped by presidents (e.g., Washington, Adams, Jefferson).
+- Time series plots showing lexical richness over time.
+
+(Optional) Grouped analysis by political party to assess differences in rhetoric.
+
+This lesson demonstrates how text-as-data approaches can be used in political science to study rhetorical strategies, topic prevalence, and language evolution in political communication.
