@@ -84,3 +84,94 @@ print(read.csv("scraped_news.csv"))
 
 
 
+
+
+
+
+
+
+
+
+# Пример: нужно обойти радномные 20 страниц с пресс-релизами. 
+# Собрать ссылки, заголовки и тексты новостей.
+# и сохранить данные в CSV.
+
+library(polite)
+library(rvest)
+library(dplyr)
+
+# Базовый URL для пресс-релизов
+base_url <- "https://www.state.gov"
+press_url <- paste0(base_url, "/press-releases/page/")
+
+# User-Agent (имитация обычного браузера)
+user_agent <- "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+
+# Списки для хранения данных
+links <- c()
+titles <- c()
+newstexts <- c()
+
+# Обход 20 страниц
+for (i in sample(1:30, 20)) {  # Берём случайные 20 страниц из первых 30
+        print(paste("Обрабатываю страницу:", i))
+        url_new <- paste0(press_url, i)
+        
+        Sys.sleep(runif(1, 5, 10))  # Рандомная задержка между запросами
+        
+        page <- bow(url_new,
+                    delay = 15,
+                    times = 5,
+                    user_agent = user_agent,
+                    force = TRUE) %>%
+                scrape()
+        
+        print("Госдеп пустил меня парсить!")
+        Sys.sleep(runif(1, 10, 15))  # Ещё одна задержка
+        
+        # Извлекаем ссылки
+        l <- page %>% html_elements(".collection-result a") %>% html_attr("href")
+        l <- ifelse(grepl("^https", l), l, paste0(base_url, l))  # Добавляем базовый URL, если ссылка относительная
+        
+        # Извлекаем заголовки
+        t <- page %>% html_elements(".collection-result h2") %>% html_text()
+        
+        links <- c(links, l)
+        titles <- c(titles, t)
+        
+        # Парсим текст каждой новости
+        for (news_url in l) {
+                Sys.sleep(runif(1, 5, 10))
+                
+                pagenews <- bow(news_url,
+                                delay = 15,
+                                times = 5,
+                                user_agent = user_agent,
+                                force = TRUE) %>%
+                        scrape()
+                
+                newstext <- pagenews %>% 
+                        html_elements(".wp-block-paragraph p") %>% 
+                        html_text() %>% 
+                        paste(collapse = " ")
+                
+                newstexts <- c(newstexts, newstext)
+        }
+}
+
+# Создание DataFrame
+df <- data.frame(links, titles, newstexts, stringsAsFactors = FALSE)
+
+# Сохранение в CSV
+dir.create("data", showWarnings = FALSE)
+write.csv(df, "data/scraped_news.csv", row.names = FALSE)
+
+# Вывод первых 5 строк
+print(head(df, 5))
+
+# Проверка сохранённого файла
+print(read.csv("data/scraped_news.csv"))
+
+
+
+
